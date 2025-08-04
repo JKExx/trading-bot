@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+
+# Data files
+/data/logs/
+/data/historical/
+/data/trades/
