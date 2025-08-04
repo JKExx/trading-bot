@@ -4,7 +4,7 @@ Local AI Trading Bot - Complete Build Plan
 1. Required Tools & Packages (Mac M4 Pro Optimized)
 Core Dependencies
 
-bash
+```bash
 # Python Environment
 pyenv install 3.11.7
 pyenv global 3.11.7
@@ -34,9 +34,10 @@ pip install prometheus-client grafana-api
 
 # Development
 pip install pytest black flake8 mypy pre-commit
+```
 Ollama Setup
 
-bash
+```bash
 # Install Ollama
 curl -fsSL https://ollama.ai/install.sh | sh
 
@@ -45,9 +46,10 @@ ollama pull mistral:7b-instruct    # Fast, good reasoning
 ollama pull llama3:8b-instruct     # Balanced performance
 ollama pull codellama:7b-instruct  # Code generation
 ollama pull dolphin-mixtral:8x7b   # Advanced reasoning (if RAM allows)
+```
 Broker-Specific Setup
 
-bash
+```bash
 # OANDA
 pip install oandapyV20
 
@@ -56,8 +58,10 @@ pip install MetaTrader5
 
 # cTrader
 pip install ctrader-py
+```
 2. Project Structure
 
+```text
 trading_bot/
 ├── config/
 │   ├── __init__.py
@@ -114,10 +118,11 @@ trading_bot/
 ├── .env                   # Environment variables
 ├── main.py               # Main trading bot
 └── README.md
+```
 3. AI Reasoning Logic Design
 LLM Integration Strategy
 
-python
+```python
 # src/ai/llm_client.py
 class OllamaClient:
     def __init__(self, model_name="mistral:7b-instruct"):
@@ -166,9 +171,10 @@ class OllamaClient:
             technical_analysis=context.get('technical_analysis', 'N/A'),
             task=prompt
         )
+```
 Prompt Templates
 
-python
+```python
 # src/ai/prompt_templates.py
 TRADE_ENTRY_PROMPT = """
 Analyze the following potential trade setup:
@@ -222,9 +228,10 @@ Focus on:
 Provide actionable insights for the next trading session.
 """
 4. Strategy Implementation (SMC + Price Action)
+```
 Smart Money Concepts Detection
 
-python
+```python
 # src/strategy/smc_strategy.py
 class SMCStrategy:
     def __init__(self, timeframes=['1H', '4H', '1D']):
@@ -374,10 +381,11 @@ class SMCStrategy:
                 })
         
         return signals
+```
 5. Trade Execution Logic
 Broker API Integration
 
-python
+```python
 # src/execution/broker_client.py
 class BrokerClient:
     def __init__(self, broker_type='oanda'):
@@ -494,10 +502,11 @@ class OrderManager:
                 actions.append({'action': 'partial_close', 'position': position['id'], 'result': result})
         
         return actions
+```
 6. Risk Management & Kill Switch
 Risk Management System
 
-python
+```python
 # src/risk/risk_manager.py
 class RiskManager:
     def __init__(self, config):
@@ -618,10 +627,11 @@ class KillSwitch:
         except Exception as e:
             logger.critical(f"Kill switch activation failed: {str(e)}")
             return {'status': 'failed', 'error': str(e)}
+```
 7. Logging & Performance Tracking
 Comprehensive Logging System
 
-python
+```python
 # src/utils/logger.py
 import logging
 from logging.handlers import RotatingFileHandler
@@ -894,10 +904,11 @@ class PerformanceDashboard:
                 labels={'cumulative_pnl': 'Cumulative P&L ($)', 'timestamp': 'Date'}
             )
             st.plotly_chart(fig, use_container_width=True)
+```
 8. Backtesting Engine
 Comprehensive Backtesting System
 
-python
+```python
 # src/backtest/backtester.py
 class Backtester:
     def __init__(self, strategy, data_source, initial_capital=10000):
@@ -1080,10 +1091,11 @@ class Backtester:
         }
         
         return results
+```
 9. Main Application Architecture
 Core Trading Bot
 
-python
+```python
 # main.py
 import asyncio
 import schedule
@@ -1354,11 +1366,12 @@ if __name__ == "__main__":
     
     # Run the bot
     asyncio.run(bot.run())
+```
 10. Version 2.0 Ideas & Roadmap
 Advanced Features for Future Development
 1. Autonomous Learning System
 
-python
+```python
 # Enhanced ML pipeline for continuous improvement
 class AutonomousLearningSystem:
     def __init__(self):
@@ -1390,9 +1403,10 @@ class AutonomousLearningSystem:
         
         # Adjust strategy parameters based on regime
         self.adapt_strategy_to_regime(regime)
+```
 2. Multi-Asset Portfolio Management
 
-python
+```python
 # Portfolio-level risk management and optimization
 class PortfolioManager:
     def __init__(self):
@@ -1426,9 +1440,10 @@ class PortfolioManager:
         hedge_trades = self.calculate_hedge_trades(portfolio_delta)
         
         return hedge_trades
+```
 3. Advanced UI/UX Dashboard
 
-python
+```python
 # Real-time trading dashboard with advanced features
 class AdvancedDashboard:
     def __init__(self):
@@ -1461,9 +1476,10 @@ class AdvancedDashboard:
         # Quick trade approval/rejection
         # Portfolio overview
         # Emergency stop functionality
+```
 4. Market Sentiment Integration
 
-python
+```python
 # News and sentiment analysis integration
 class SentimentAnalyzer:
     def __init__(self):
@@ -1494,9 +1510,10 @@ class SentimentAnalyzer:
             technical_signal['confidence'] *= 0.8  # Reduce confidence
         
         return technical_signal
+```
 5. Advanced Risk Management
 
-python
+```python
 # Sophisticated risk management system
 class AdvancedRiskManager:
     def __init__(self):
@@ -1533,10 +1550,11 @@ class AdvancedRiskManager:
             )
         
         return results
+```
 11. Security & Operational Considerations
 Security Best Practices
 
-python
+```python
 # Secure configuration management
 class SecureConfig:
     def __init__(self):
@@ -1558,9 +1576,10 @@ class SecureConfig:
         # Implement connection pooling
         # Regular credential rotation
         pass
+```
 Monitoring & Alerting
 
-python
+```python
 # Comprehensive monitoring system
 class MonitoringSystem:
     def __init__(self):
@@ -1588,10 +1607,11 @@ class MonitoringSystem:
         # Trading anomaly alerts
         # Risk threshold alerts
         pass
+```
 12. Deployment Instructions
 Initial Setup
 
-bash
+```bash
 # 1. Create project directory
 mkdir ai_trading_bot
 cd ai_trading_bot
@@ -1617,9 +1637,10 @@ python scripts/run_backtest.py --symbol EURUSD --days 30
 
 # 7. Start the bot
 python main.py
+```
 Production Deployment
 
-bash
+```bash
 # Use process manager for production
 pip install supervisor
 
@@ -1627,6 +1648,7 @@ pip install supervisor
 # Start with demo account first
 # Monitor logs carefully
 # Implement gradual capital allocation
+```
 This comprehensive blueprint provides everything you need to build a sophisticated AI-assisted trading bot. Start with the core components and gradually add advanced features. Remember to:
 	1	Start with paper trading to validate your strategy
 	2	Implement comprehensive logging from day one
@@ -1635,4 +1657,3 @@ This comprehensive blueprint provides everything you need to build a sophisticat
 	5	Monitor performance closely and iterate
 	6	Maintain strict risk management at all times
 The modular design allows for iterative development - you can start with basic functionality and add sophisticated features over time. Focus on getting the core trading logic solid before adding advanced AI features.
-
