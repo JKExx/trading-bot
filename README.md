@@ -1,4 +1,5 @@
-THIS IS THE PLAN.
+This repository provides a blueprint for building a local AI-driven trading bot. It outlines required tools, installation steps, and modular components for executing trades, logging activity, and managing risk.
+
 
 # Local AI Trading Bot - Complete Build Plan
 
