@@ -1,7 +1,22 @@
-THIS IS THE PLAN. 
+THIS IS THE PLAN.
 
-Local AI Trading Bot - Complete Build Plan
-1. Required Tools & Packages (Mac M4 Pro Optimized)
+# Local AI Trading Bot - Complete Build Plan
+
+## Table of Contents
+- [Required Tools & Packages](#required-tools--packages-mac-m4-pro-optimized)
+- [Project Structure](#project-structure)
+- [AI Reasoning Logic Design](#ai-reasoning-logic-design)
+- [Strategy Implementation (SMC + Price Action)](#strategy-implementation-smc--price-action)
+- [Trade Execution Logic](#trade-execution-logic)
+- [Risk Management & Kill Switch](#risk-management--kill-switch)
+- [Logging & Performance Tracking](#logging--performance-tracking)
+- [Backtesting Engine](#backtesting-engine)
+- [Main Application Architecture](#main-application-architecture)
+- [Version 2.0 Ideas & Roadmap](#version-20-ideas--roadmap)
+- [Security & Operational Considerations](#security--operational-considerations)
+- [Deployment Instructions](#deployment-instructions)
+
+## Required Tools & Packages (Mac M4 Pro Optimized)
 Core Dependencies
 
 bash
@@ -56,7 +71,8 @@ pip install MetaTrader5
 
 # cTrader
 pip install ctrader-py
-2. Project Structure
+
+## Project Structure
 
 trading_bot/
 ├── config/
@@ -114,7 +130,8 @@ trading_bot/
 ├── .env                   # Environment variables
 ├── main.py               # Main trading bot
 └── README.md
-3. AI Reasoning Logic Design
+
+## AI Reasoning Logic Design
 LLM Integration Strategy
 
 python
@@ -221,7 +238,7 @@ Focus on:
 
 Provide actionable insights for the next trading session.
 """
-4. Strategy Implementation (SMC + Price Action)
+## Strategy Implementation (SMC + Price Action)
 Smart Money Concepts Detection
 
 python
@@ -374,7 +391,7 @@ class SMCStrategy:
                 })
         
         return signals
-5. Trade Execution Logic
+## Trade Execution Logic
 Broker API Integration
 
 python
@@ -494,7 +511,7 @@ class OrderManager:
                 actions.append({'action': 'partial_close', 'position': position['id'], 'result': result})
         
         return actions
-6. Risk Management & Kill Switch
+## Risk Management & Kill Switch
 Risk Management System
 
 python
@@ -618,7 +635,7 @@ class KillSwitch:
         except Exception as e:
             logger.critical(f"Kill switch activation failed: {str(e)}")
             return {'status': 'failed', 'error': str(e)}
-7. Logging & Performance Tracking
+## Logging & Performance Tracking
 Comprehensive Logging System
 
 python
@@ -894,7 +911,7 @@ class PerformanceDashboard:
                 labels={'cumulative_pnl': 'Cumulative P&L ($)', 'timestamp': 'Date'}
             )
             st.plotly_chart(fig, use_container_width=True)
-8. Backtesting Engine
+## Backtesting Engine
 Comprehensive Backtesting System
 
 python
@@ -1080,7 +1097,7 @@ class Backtester:
         }
         
         return results
-9. Main Application Architecture
+## Main Application Architecture
 Core Trading Bot
 
 python
@@ -1354,7 +1371,7 @@ if __name__ == "__main__":
     
     # Run the bot
     asyncio.run(bot.run())
-10. Version 2.0 Ideas & Roadmap
+## Version 2.0 Ideas & Roadmap
 Advanced Features for Future Development
 1. Autonomous Learning System
 
@@ -1533,7 +1550,7 @@ class AdvancedRiskManager:
             )
         
         return results
-11. Security & Operational Considerations
+## Security & Operational Considerations
 Security Best Practices
 
 python
@@ -1588,7 +1605,7 @@ class MonitoringSystem:
         # Trading anomaly alerts
         # Risk threshold alerts
         pass
-12. Deployment Instructions
+## Deployment Instructions
 Initial Setup
 
 bash
