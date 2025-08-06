@@ -1,9 +1,12 @@
 This repository provides a blueprint for building a local AI-driven trading bot. It outlines required tools, installation steps, and modular components for executing trades, logging activity, and managing risk.
 
+> **Warning**  
+> This project is for educational purposes only and does not constitute financial advice. Test thoroughly and trade at your own risk.
 
 # Local AI Trading Bot - Complete Build Plan
 
 ## Table of Contents
+- [Quick Start](#quick-start)
 - [Required Tools & Packages](#required-tools--packages-mac-m4-pro-optimized)
 - [Project Structure](#project-structure)
 - [AI Reasoning Logic Design](#ai-reasoning-logic-design)
@@ -16,6 +19,13 @@ This repository provides a blueprint for building a local AI-driven trading bot.
 - [Version 2.0 Ideas & Roadmap](#version-20-ideas--roadmap)
 - [Security & Operational Considerations](#security--operational-considerations)
 - [Deployment Instructions](#deployment-instructions)
+
+## Quick Start
+1. Clone the repository.
+2. Install dependencies: `pip install -r requirements.txt`
+3. Copy `.env.example` to `.env` and add your API keys.
+4. Run the tests to verify the environment: `pytest`
+5. Start the bot: `python main.py`
 
 ## Required Tools & Packages (Mac M4 Pro Optimized)
 Core Dependencies
